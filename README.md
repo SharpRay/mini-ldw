@@ -102,7 +102,7 @@ select t1.* from mysql_schema.tbl t1 join clickhouse_schema.tbl t2 on t1.object_
 create table tbl (id int, name varchar(50));
 ```
 
-The data of this new creating table will be stay in heap memory, and will be lost after the server restarted.
+The data of this new creating table will be cached in heap memory, and will be lost after the server restarted.
 
 ## Create View
 
@@ -127,7 +127,7 @@ update tbl set name = 'paradise' where id = 1;
 delete from tbl where id = 1;
 ```
 
-The update and delete operations on tables in the physical data source will be persisted.
+The inserte, update and delete operations on tables in the physical data source will be persisted.
 
 ## Show Schemas
 
