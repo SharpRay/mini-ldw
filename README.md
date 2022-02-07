@@ -112,7 +112,12 @@ create view test_view as select t1.* from mysql_schema.tbl t1 join clickhouse_sc
 
 The data of this new creating view consists of multiple tables or views belonging to different data sources.
 
-## Update & Delete
+
+## Insert & Update & Delete
+
+``` sql
+insert into tbl (id, name) values (1, 'paradise');
+```
 
 ``` sql
 update tbl set name = 'paradise' where id = 1;
