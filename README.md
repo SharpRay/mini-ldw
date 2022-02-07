@@ -118,11 +118,13 @@ delete from tbl where id = 1;
 
 The update and delete operations on tables in the physical data source will be persisted.
 
-## Show Schemas & Show Tables
+## Show Schemas
 
 ``` sql
-show schemas
+show schemas;
 ```
+
+## Show Tables
 
 ``` sql
 show tables;
