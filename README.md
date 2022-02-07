@@ -22,6 +22,12 @@ This project currently supports creating view with views and tables in different
 mvn clean package -DskipTests
 ```
 
+## Start server
+
+```
+cd target && java -cp lib/*:mini-ldw-demo.jar com.mininglamp.MiniLDW
+```
+
 ## Access using MySQL CLI
 
 ```
