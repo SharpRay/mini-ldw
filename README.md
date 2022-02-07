@@ -69,7 +69,7 @@ create schema doris_schema 'mysql:127.0.0.1:9030:test_db:root:root';
 create schema es_schema 'elasticsearch:127.0.0.1:9200:test_index:root:root';
 ```
 
-If the index is not specified, then all the indexes will be mapped to tables in the elasticsearch schema.
+If the index is not specified, then all indexes will be mapped to tables in the elasticsearch schema.
 
 ## Drop Schema
 
