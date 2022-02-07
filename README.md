@@ -127,7 +127,7 @@ update tbl set name = 'paradise' where id = 1;
 delete from tbl where id = 1;
 ```
 
-The inserte, update and delete operations on tables in the physical data source will be persisted.
+The insert, update and delete operations on tables in the physical data source will be persisted.
 
 ## Show Schemas
 
