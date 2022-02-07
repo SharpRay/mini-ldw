@@ -10,7 +10,7 @@ The supported databases & engines in this demo include:
 
 This logical data warehouse compatible with MySQL protocol and can be accessd with MySQL CLI and MySQL JDBC.
 
-The goal of this project is simply to demonstrate the capabilities of Calcite in data virtualization, the metadata persistence and privileges is not implemented. After server restarted, the schemas, tables and views that previously created will be lost.
+The goal of this project is simply to demonstrate the capabilities of Calcite in data virtualization, the metadata persistence and privileges are not implemented. After server restarted, the schemas, tables and views that previously created will be lost.
 
 This project currently supports creating view with views and tables in different data sources, this is the core feature of data virtualization product.
 
