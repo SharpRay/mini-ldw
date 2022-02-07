@@ -10,7 +10,9 @@ The supported databases & engines in this demo version include:
 
 This logical data warehouse compatible with MySQL protocol and can be accessd with MySQL CLI and MySQL JDBC.
 
-The goal of this project is simply to demonstrate the capabilities of Calcite in data virtualization, therefore, metadata persistence is not implemented. After server restarted, the schemas, tables and views that previously created will be lost.
+The goal of this project is simply to demonstrate the capabilities of Calcite in data virtualization, therefore, metadata persistence and privileges is not implemented. After server restarted, the schemas, tables and views that previously created will be lost.
+
+This project currently supports creating view with views and tables in different data sources, this is the core feature of data virtualization product.
 
 # Usage
 
@@ -18,4 +20,116 @@ The goal of this project is simply to demonstrate the capabilities of Calcite in
 
 ```
 mvn clean package -DskipTests
+```
+
+## Access using MySQL CLI
+
+```
+mysql -h 127.0.0.1 -uroot -P9031 -A
+```
+Due to hard-to-locate bug, the -A parameter must be specified to disable auto-rehash.
+
+# Features
+
+## Create Schema
+
+### Create MySql schema
+
+``` sql
+create schema mysql_schema 'mysql:127.0.0.1:3306:test_db:root:root';
+```
+
+### Create PostgreSQL schema
+
+``` sql
+create schema pg_schema 'postgresql:127.0.0.1:5432:test_db:root:root';
+```
+
+### Create Clickhouse schema
+
+``` sql
+create schema ck_schema 'clickhouse:127.0.0.1:8123:test_db:root:root';
+```
+
+### Create Doris schema
+
+``` sql
+create schema doris_schema 'mysql:127.0.0.1:9030:test_db:root:root';
+```
+
+### Create Elasticsearch schema
+
+``` sql
+create schema es_schema 'elasticsearch:127.0.0.1:9200:test_index:root:root';
+```
+
+If the index is not specified, then all the indexes will be mapped to tables in the elasticsearch schema.
+
+### Drop Schema
+
+``` sql
+drop schema mysql_schema;
+```
+
+### Query
+
+``` sql
+use mysql_schema;
+select * from tbl where id = 1;
+```
+
+or
+
+``` sql
+select * mysql_schema.tbl where id = 1;
+```
+
+Of course, it also supports multi-data-source fusion：
+
+``` sql
+select t1.* from mysql_schema.tbl t1 join clickhouse_schema.tbl t2 on t1.object_id = t2.id where t2.name in (’happy‘, 'Chinese', 'new', 'year');
+```
+
+### Create Table
+
+``` sql
+create table tbl (id int, name varchar(50));
+```
+
+The data of this new creating table will be stay in heap memory, and will be lost after the server restarted.
+
+### Create View
+
+``` sql
+create view test_view as select t1.* from mysql_schema.tbl t1 join clickhouse_schema.tbl t2 on t1.object_id = t2.id;
+```
+
+The data of this new creating view consists of multiple tables or views belonging to different data sources.
+
+### Update & Delete
+
+``` sql
+update tbl set name = 'paradise' where id = 1;
+```
+
+``` sql
+delete from tbl where id = 1;
+```
+
+The update and delete operations on tables in the physical data source will be persisted.
+
+### Show Schemas & Show Tables
+
+``` sql
+show schemas
+```
+
+``` sql
+show tables;
+```
+
+### Describe Table
+
+``` sql
+desc tbl;
 ```
