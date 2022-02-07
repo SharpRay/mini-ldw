@@ -1,7 +1,7 @@
 # mini-ldw
 
 A logical data warehouse demo. 
-The supported databases & engines in this demo version include:
+The supported databases & engines in this demo include:
 * MySQL (compatible with mysql-server-5.7.36, mysql-jdbc-5.1.41)
 * PostgreSQL (compatible with postgresql-server-9.5.19, postgresql-jdbc-42.3.1)
 * Clickhouse (compatible with clickhouse-server-22.1.3.7, clickhouse-jdbc-0.3.2-patch4)
