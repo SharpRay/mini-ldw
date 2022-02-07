@@ -65,13 +65,13 @@ create schema es_schema 'elasticsearch:127.0.0.1:9200:test_index:root:root';
 
 If the index is not specified, then all the indexes will be mapped to tables in the elasticsearch schema.
 
-### Drop Schema
+## Drop Schema
 
 ``` sql
 drop schema mysql_schema;
 ```
 
-### Query
+## Query
 
 ``` sql
 use mysql_schema;
@@ -90,7 +90,7 @@ Of course, it also supports multi-data-source fusion：
 select t1.* from mysql_schema.tbl t1 join clickhouse_schema.tbl t2 on t1.object_id = t2.id where t2.name in (’happy‘, 'Chinese', 'new', 'year');
 ```
 
-### Create Table
+## Create Table
 
 ``` sql
 create table tbl (id int, name varchar(50));
@@ -98,7 +98,7 @@ create table tbl (id int, name varchar(50));
 
 The data of this new creating table will be stay in heap memory, and will be lost after the server restarted.
 
-### Create View
+## Create View
 
 ``` sql
 create view test_view as select t1.* from mysql_schema.tbl t1 join clickhouse_schema.tbl t2 on t1.object_id = t2.id;
@@ -106,7 +106,7 @@ create view test_view as select t1.* from mysql_schema.tbl t1 join clickhouse_sc
 
 The data of this new creating view consists of multiple tables or views belonging to different data sources.
 
-### Update & Delete
+## Update & Delete
 
 ``` sql
 update tbl set name = 'paradise' where id = 1;
@@ -118,7 +118,7 @@ delete from tbl where id = 1;
 
 The update and delete operations on tables in the physical data source will be persisted.
 
-### Show Schemas & Show Tables
+## Show Schemas & Show Tables
 
 ``` sql
 show schemas
@@ -128,7 +128,7 @@ show schemas
 show tables;
 ```
 
-### Describe Table
+## Describe Table
 
 ``` sql
 desc tbl;
