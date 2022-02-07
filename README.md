@@ -110,6 +110,8 @@ The data of this new creating table will be cached in heap memory, and will be l
 create view test_view as select t1.* from mysql_schema.tbl t1 join clickhouse_schema.tbl t2 on t1.object_id = t2.id;
 ```
 
+The data of this new creating view consists of multiple tables or views belonging to different data sources.
+
 
 ## Insert & Update & Delete
 
