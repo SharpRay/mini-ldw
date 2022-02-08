@@ -1,8 +1,6 @@
 package com.mininglamp.qe;
 
 
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
 import com.mininglamp.analysis.CalciteStmt;
 import com.mininglamp.analysis.ParseNode;
 import com.mininglamp.analysis.SqlParser;
@@ -15,7 +13,6 @@ import com.mininglamp.common.UserException;
 import com.mininglamp.mysql.MysqlChannel;
 import com.mininglamp.mysql.MysqlCommand;
 import com.mininglamp.mysql.MysqlPacket;
-import com.mininglamp.mysql.MysqlProto;
 import com.mininglamp.mysql.MysqlSerializer;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.logging.log4j.LogManager;
@@ -26,8 +23,6 @@ import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.nio.channels.AsynchronousCloseException;
-import java.util.List;
-import java.util.UUID;
 
 /**
  * Process one mysql connection, receive one packet, process, send one packet.

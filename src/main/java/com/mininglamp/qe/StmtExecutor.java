@@ -173,6 +173,13 @@ public class StmtExecutor {
             String qualifiedSql = generateQualifiedSql(sqlNode.toString(), "UPDATE");
             qualifiedSql = generateQualifiedSql(qualifiedSql, "FROM");
             CalciteSchema.getCalciteSchema().cud(qualifiedSql);
+        } else if (kind == SqlKind.DELETE) {
+            String qualifiedSql = generateQualifiedSql(sqlNode.toString(), "FROM");
+            CalciteSchema.getCalciteSchema().cud(qualifiedSql);
+        } else if (kind == SqlKind.INSERT) {
+            String qualifiedSql = generateQualifiedSql(sqlNode.toString(), "INTO");
+            qualifiedSql = generateQualifiedSql(qualifiedSql, "FROM");
+            CalciteSchema.getCalciteSchema().cud(qualifiedSql);
         } else {
             throw new UserException("The operation is not supported yet.");
         }
