@@ -14,6 +14,8 @@ The goal of this project is simply to demonstrate the capabilities of Calcite in
 
 This project currently supports creating view with views and tables in different data sources, this is the core feature of data virtualization product.
 
+You can implement a customized data source adapter using Calcite Schema and Table related APIs. e.g., a graph database adapter. 
+
 # Usage
 
 ## Compile
