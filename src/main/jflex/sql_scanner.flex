@@ -15,7 +15,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
-package com.mininglamp.analysis;
+package org.rzlabs.analysis;
 
 import java_cup.runtime.Symbol;
 import java.io.StringWriter;
@@ -26,12 +26,10 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Iterator;
-import java.util.List;
-import java.util.ArrayList;
 
-import com.mininglamp.analysis.SqlParserSymbols;
-import com.mininglamp.common.util.SqlUtils;
-import com.mininglamp.qe.SqlModeHelper;
+import org.rzlabs.analysis.SqlParserSymbols;
+import org.rzlabs.common.util.SqlUtils;
+import org.rzlabs.qe.SqlModeHelper;
 
 %%
 
